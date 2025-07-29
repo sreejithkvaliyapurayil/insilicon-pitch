@@ -771,3 +771,37 @@ select.form-control {
     grid-template-columns: 1fr;
   }
 }
+/* === Neon-blue dashboard look === */
+:root{
+  --neon:   #00ffff;   /* bright neon-blue */
+  --bg:     #0a0a0a;   /* dark backdrop for contrast */
+  --card-bg:#001f26;   /* very dark teal so neon pops */
+  --text:   #ffffff;   /* white text */
+}
+
+/* overall page */
+body{background:var(--bg);color:var(--text);}
+
+/* dashboard grid */
+#dashboard{
+  background:linear-gradient(135deg,#003a4d 0%,#001f26 100%);
+  padding:3rem 0;               /* keeps neon cards centered */
+  border-top:2px solid var(--neon);
+  box-shadow:0 -2px 15px var(--neon) inset;
+}
+
+/* each card now glows neon-blue */
+.card{
+  background:var(--card-bg);
+  border:2px solid var(--neon);
+  color:var(--text);
+  text-shadow:0 0 6px var(--neon);
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px var(--neon),0 0 40px var(--neon) inset;
+}
+
+/* headings stay neon for consistency */
+h1,h2,h3{color:var(--neon);}
+
