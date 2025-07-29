@@ -1,189 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSILICON Semiconductor - Investor Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0e0e0e;
-            color: #f4f4f4;
-        }
-
-        .app-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .dashboard-header {
-            background: #121212;
-            padding: 2rem 1rem;
-            border-bottom: 1px solid #222;
-            text-align: center;
-        }
-
-        .company-name {
-            font-size: 2.8rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #1DE9B6, #00E5FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0;
-        }
-
-        .tagline, .subtitle {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-top: 0.3rem;
-        }
-
-        .dashboard-main {
-            padding: 2rem;
-            flex: 1;
-        }
-
-        .sections-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .section-card {
-            background-color: #1a1a1a;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .section-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
-        }
-
-        .section-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .detail-view {
-            display: none;
-            background: #0f0f0f;
-            padding: 2rem;
-            flex: 1;
-        }
-
-        .detail-view.active {
-            display: block;
-        }
-
-        .detail-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-
-        .back-button {
-            background: none;
-            border: none;
-            color: #00e5ff;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .detail-logo .company-name-small {
-            font-size: 1.5rem;
-            background: linear-gradient(90deg, #1DE9B6, #00E5FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .detail-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .detail-points {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #ccc;
-        }
-
-        .detail-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Custom AI/Semiconductor Icons */
-        .icon-chip::before { content: "🧠"; }
-        .icon-fab::before { content: "🏭"; }
-        .icon-globe::before { content: "🌐"; }
-        .icon-gear::before { content: "⚙️"; }
-        .icon-eco::before { content: "♻️"; }
-        .icon-rocket::before { content: "🚀"; }
-        .icon-strategy::before { content: "📊"; }
-        .icon-campus::before { content: "🏫"; }
-
-        @media (max-width: 600px) {
-            .company-name { font-size: 2rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INSILICON Semiconductor - Investor Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #0a0f1c;
+      color: #ffffff;
+    }
+    .app-container {
+      padding: 0;
+      margin: 0 auto;
+      max-width: 1280px;
+    }
+    .dashboard-header {
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+    }
+    .company-name {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00ffe0, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tagline, .subtitle {
+      color: #b2f5ff;
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .card {
+      background: #131b2e;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px #00ffe0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffe0;
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #00ffe0;
+    }
+    .card-description {
+      font-size: 0.95rem;
+      color: #d6faff;
+    }
+    .detail-view {
+      display: none;
+      background: #0a0f1c;
+      padding: 2rem;
+      color: #ffffff;
+    }
+    .detail-view.active {
+      display: block;
+    }
+    .back-button {
+      background: none;
+      color: #00ffe0;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+    .detail-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00ffe0, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .detail-points {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #d6faff;
+    }
+    @media (max-width: 600px) {
+      .dashboard-header {
+        padding: 2rem 1rem 1rem;
+      }
+      .sections-grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Dashboard View -->
-        <div id="dashboard" class="dashboard-view">
-            <header class="dashboard-header">
-                <div class="header-content">
-                    <div class="logo-section">
-                        <h1 class="company-name">INSILICON</h1>
-                        <p class="tagline">India-UAE AI-Native GPU Powerhouse</p>
-                        <p class="subtitle">Design → Fab → Automation — One Campus</p>
-                    </div>
-                </div>
-            </header>
-
-            <main class="dashboard-main">
-                <div class="sections-grid" id="sectionsGrid">
-                    <!-- Sections will be dynamically populated -->
-                </div>
-            </main>
+  <div class="app-container">
+    <!-- Dashboard View -->
+    <div id="dashboard" class="dashboard-view">
+      <header class="dashboard-header">
+        <h1 class="company-name">INSILICON</h1>
+        <p class="tagline">India-UAE AI-Native GPU Powerhouse</p>
+        <p class="subtitle">Design → Fab → Automation — One Campus</p>
+      </header>
+      <main class="dashboard-main">
+        <div class="sections-grid" id="sectionsGrid">
+          <!-- Cards will be dynamically inserted here -->
         </div>
-
-        <!-- Detail View -->
-        <div id="detailView" class="detail-view">
-            <header class="detail-header">
-                <button class="back-button" id="backButton">← Back to Dashboard</button>
-                <div class="detail-logo">
-                    <span class="company-name-small">INSILICON</span>
-                </div>
-            </header>
-
-            <main class="detail-main">
-                <div class="detail-content">
-                    <div class="detail-icon" id="detailIcon">📈</div>
-                    <h1 class="detail-title" id="detailTitle">Section Title</h1>
-                    <div class="detail-points" id="detailPoints">
-                        <!-- Points will be dynamically populated -->
-                    </div>
-                </div>
-            </main>
-        </div>
+      </main>
     </div>
 
-    <script src="app.js"></script>
+    <!-- Detail View -->
+    <div id="detailView" class="detail-view">
+      <button class="back-button" onclick="goBack()">← Back to Dashboard</button>
+      <h1 class="detail-title" id="detailTitle">Title</h1>
+      <div class="detail-points" id="detailPoints"></div>
+    </div>
+  </div>
+
+  <script>
+    const sections = [
+      {
+        icon: "📈",
+        title: "Market Opportunity",
+        description: "$453B AI Chip Market by 2030 (14% CAGR)",
+        details: "AI Semiconductor industry growing with CAGR 14% reaching $453B by 2030."
+      },
+      {
+        icon: "🛠️",
+        title: "Technical Architecture",
+        description: "NVIDIA H100 vs INSILICON-1: 78% power reduction, 50% cost savings",
+        details: "We have redesigned GPU cores for data-locality, compute-in-memory and AI inferencing, leading to efficiency."
+      },
+      {
+        icon: "🏭",
+        title: "Manufacturing Revolution",
+        description: "Phase-gate approach: Fabless → India-UAE → Full Integration",
+        details: "AI-driven fabless design migrating to full in-house chip + automation."
+      },
+      {
+        icon: "��",
+        title: "Geopolitical Advantages",
+        description: "India-UAE corridor advantages, tariff arbitrage, strategic positioning",
+        details: "Both governments collaborating on semiconductor strategy gives us edge."
+      },
+      {
+        icon: "💰",
+        title: "Investment Thesis",
+        description: "$50M Series A breakdown, $1B revenue by 2028, IPO readiness 2028",
+        details: "Clear path from silicon tapeout to monetization, with VCs and sovereign fund interest."
+      },
+      {
+        icon: "👨‍🔬",
+        title: "Founder's Edge",
+        description: "22 years: ST Micro → FICO AI/Cloud Director, RTL + Kubernetes expertise",
+        details: "The founder blends chip design + modern AI infrastructure deployment."
+      },
+      {
+        icon: "⚡",
+        title: "Problem-Solution Gap",
+        description: "Current GPUs 700W impossible for edge, 6-month redesign too slow",
+        details: "INSILICON aims for sub-300W, rapid prototyping cycles using AI-driven EDA tools."
+      },
+      {
+        icon: "🏢",
+        title: "Integrated Campus Model",
+        description: "Design → Fab → Automation — One Campus in Dubai Silicon Oasis",
+        details: "First of its kind India-UAE co-campus with shared IP and supply chain."
+      },
+      {
+        icon: "📅",
+        title: "Roadmap Timeline",
+        description: "M1-18: Fabless design → Y2: Pilot fab → Y5: Mega fab",
+        details: "Clear phase-gated roadmap for scaling design to manufacturing."
+      },
+      {
+        icon: "🧱",
+        title: "Tech Moats",
+        description: "AI-Native ISA, closed-loop DFM, sovereign Cloud GPU stack, Gen5 EDA",
+        details: "Unique tech stack combining software + silicon for AI inference."
+      },
+      {
+        icon: "💼",
+        title: "Business Model",
+        description: "4 revenue streams: Chip sales, IP licensing, Cloud GPU as a Service, SaaS EDA",
+        details: "Multiple monetization paths reducing investor risk."
+      },
+      {
+        icon: "🚀",
+        title: "Go-to-Market Strategy",
+        description: "Anchor customers, strategic alliances, exclusive first looks",
+        details: "Securing design wins in UAE, India and APAC to build early traction."
+      }
+    ];
+
+    const grid = document.getElementById("sectionsGrid");
+    const detailView = document.getElementById("detailView");
+    const dashboard = document.getElementById("dashboard");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailPoints = document.getElementById("detailPoints");
+
+    sections.forEach(section => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="card-icon">${section.icon}</div>
+        <div class="card-title">${section.title}</div>
+        <div class="card-description">${section.description}</div>
+      `;
+      card.addEventListener("click", () => showDetail(section));
+      grid.appendChild(card);
+    });
+
+    function showDetail(section) {
+      detailTitle.textContent = section.title;
+      detailPoints.textContent = section.details;
+      dashboard.style.display = "none";
+      detailView.classList.add("active");
+    }
+
+    function goBack() {
+      detailView.classList.remove("active");
+      dashboard.style.display = "block";
+    }
+  </script>
 </body>
 </html>
 
