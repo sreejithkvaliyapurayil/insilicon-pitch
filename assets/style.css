@@ -738,36 +738,137 @@ select.form-control {
 }
 
 /* END PERPLEXITY DESIGN SYSTEM */
-/* --- appended / modified parts only --- */
-/* Update hidden utility */
-.hidden {
-  display: none !important;
+/* Custom styles for INSILICON Investor Deck */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
-/* Remove the old .detail-view.hidden rules (opacity/pointer-events) by overriding */
-.detail-view.hidden {
-  display: none !important;
-  opacity: 0;
+.header h1 {
+  color: var(--color-primary);
+  text-shadow: 0 0 6px rgba(var(--color-teal-300-rgb, 50, 184, 198), 0.7);
 }
 
-/* Adjust responsive grid breakpoints */
-.sections-grid {
+.tagline {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* Glow utility */
+.glow {
+  box-shadow: 0 0 8px rgba(var(--color-teal-300-rgb, 50, 184, 198), 0.6);
+}
+
+.glow:hover {
+  box-shadow: 0 0 12px rgba(var(--color-teal-300-rgb, 50, 184, 198), 0.9);
+}
+
+/* Grid Layout */
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 2rem;
-  min-height: 80vh;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-16);
+  margin-top: var(--space-16);
 }
 
-@media (max-width: 900px) {
-  .sections-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
-  }
+.grid-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+  transition: box-shadow var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard);
 }
 
-@media (max-width: 600px) {
-  .sections-grid {
-    grid-template-columns: 1fr;
-  }
+.grid-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
+
+.grid-item__header {
+  background-color: var(--color-secondary);
+  padding: var(--space-12);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-card-border-inner);
+  text-align: center;
+}
+
+.grid-item__content {
+  padding: var(--space-12);
+  display: none;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.grid-item.expanded .grid-item__content {
+  display: block;
+}
+
+/* Slide View */
+.slide-view {
+  margin-top: var(--space-32);
+}
+
+.slide-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-24);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.slide-container h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-12);
+}
+
+.slide-controls {
+  margin-top: var(--space-16);
+}
+
+/* Chart container fix */
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+.detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg);
+  padding: 4rem 6%;
+  overflow-y: auto;
+  z-index: 9999;
+  display: none;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+header img {
+  width: 150px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+}
+header img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 28px rgba(0, 255, 255, 0.7);
+}
+
+

@@ -1,66 +1,305 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
-  <title>INSILICON Semiconductor Pitch Deck</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.2/reveal.min.css'>
-  <link rel='stylesheet' href='css/style.css'>
+  <meta charset="utf-8" />
+  <title>INSILICON Semiconductor Pitch</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root {
+      --neon:#00ffff;
+      --deep:#1e3a8a;
+      --bg:#0a0a0a;
+      --text:#e6e6e6;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+    header img {
+      width: 120px;
+      height: auto;
+    }
+    header h1 {
+      color: var(--neon);
+      font-size: 1.8rem;
+      margin-top: 1rem;
+    }
+    #dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      width: 95%;
+      max-width: 1200px;
+      padding: 2rem 0;
+    }
+    .card {
+      background: var(--deep);
+      border: 2px solid var(--neon);
+      border-radius: 12px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 15px var(--neon);
+    }
+    .card h3 {
+      color: var(--neon);
+      margin-bottom: .5rem;
+      font-size: 1.1rem;
+    }
+    .card p {
+      font-size: .9rem;
+      line-height: 1.4;
+    }
+    .detail {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      padding: 4rem 6%;
+      overflow-y: auto;
+      display: none;
+    }
+    .detail.active {
+      display: block;
+      animation: fadeIn .3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+    .detail h2 {
+      color: var(--neon);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    .detail p, .detail ul {
+      margin: 1rem 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .backBtn {
+      margin-top: 2rem;
+      background: var(--neon);
+      color: var(--deep);
+      border: none;
+      padding: .7rem 1.5rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .backBtn:hover {
+      opacity: .8;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--neon);
+      border-radius: 3px;
+    }
+  </style>
 </head>
 <body>
-  <div class='reveal'>
-    <div class='slides'>
-      <section>
-        <h1>INSILICON Semiconductor</h1>
-        <h3>India–UAE AI-Native GPU Powerhouse</h3>
-        <p>Design ➜ Fab ➜ Automation — One Campus</p>
-        <img src='img/logo.png' class='logo'>
-      </section>
-      <section>
-        <h2>Market Convergence – The Trillion-Dollar Opportunity</h2>
-        <ul>
-          <li>$453B Global AI Chip Market by 2030 (14% CAGR)</li>
-          <li>$66.5B Edge AI Market (21.7% CAGR)</li>
-          <li>$85B+ India-UAE Trade Corridor</li>
-          <li>US Tariff Impact: 25-100% displacement</li>
-          <li>$100B VC Funding flowing into AI</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Technical Architecture Deep-Dive</h2>
-        <p><strong>NVIDIA H100 vs INSILICON-1</strong></p>
-        <ul>
-          <li>78% Power Reduction (700W → 150W)</li>
-          <li>50% Cost Savings ($35K → $17.5K)</li>
-          <li>AI-Native Transformer Processing Units</li>
-          <li>4 nm, 90.7 B transistors, 80 GB HBM3</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Manufacturing & Automation Roadmap</h2>
-        <ul>
-          <li>Fabless → India-UAE Manufacturing → Full Integration</li>
-          <li>Karnataka 8" Fab: 50 k wafers/mo</li>
-          <li>Smart-Fab AI yield optimisation</li>
-          <li>CEPA duty-free flow, 15-20% cost reduction</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Investment Thesis & Financials</h2>
-        <ul>
-          <li>$50 M Series A for 18-month runway</li>
-          <li>First silicon in 12 months</li>
-          <li>2% of $453B market ⇒ $9B potential by 2030</li>
-          <li>IPO readiness 2028</li>
-        </ul>
-        <h3>Contact</h3>
-        <p>founder@insilicon.ai · +971-XX-XXX-XXXX</p>
-      </section>
-    </div>
-  </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.2/reveal.min.js'></script>
-  <script>
-    Reveal.initialize({ hash: true });
-  </script>
+
+<header>
+  <img src="insilicon_logo_resized.png" alt="INSILICON Logo" />
+  <h1>INSILICON Strategic & Technical Pitch</h1>
+</header>
+
+<section id="dashboard">
+  <!-- Original 5 Cards -->
+  <article class="card" data-target="market">
+    <h3>Market Opportunity</h3>
+    <p>$453 B AI chip TAM by 2030, 14% CAGR, Edge-AI 21.7% CAGR.</p>
+  </article>
+  <article class="card" data-target="architecture">
+    <h3>Technical Architecture</h3>
+    <p>INSILICON-1 vs NVIDIA H100: 78% lower power, 50% cost.</p>
+  </article>
+  <article class="card" data-target="manufacturing">
+    <h3>Smart-Fab Roadmap</h3>
+    <p>Fabless → India 8″ fab → UAE mega-fab, AI-driven automation.</p>
+  </article>
+  <article class="card" data-target="corridor">
+    <h3>India–UAE Corridor</h3>
+    <p>Tariff-free CEPA, ₹76 k Cr PLI + $100 B UAE funds.</p>
+  </article>
+  <article class="card" data-target="funding">
+    <h3>Series A $50 M Ask</h3>
+    <p>Use-of-funds, milestones, $9 B revenue upside.</p>
+  </article>
+
+  <article class="card" data-target="point1">
+    <h3>Market Convergence & Opportunity</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point2">
+    <h3>Deep Technical Differentiation</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point3">
+    <h3>Manufacturing & Automation</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point4">
+    <h3>Geopolitical & Strategic Positioning</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point5">
+    <h3>Market Timing & Moats</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point6">
+    <h3>Financial & Partnering Roadmap</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point7">
+    <h3>AI-Native Architecture & Edge</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point8">
+    <h3>Vertical Integration & Ecosystem</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point9">
+    <h3>Integrated Campus Model</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point10">
+    <h3>Global & Regional Strategy</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point11">
+    <h3>Impact & ESG Commitment</h3>
+    <p>Click to view details →</p>
+  </article>
+
+  <article class="card" data-target="point12">
+    <h3>Call to Action & Next Steps</h3>
+    <p>Click to view details →</p>
+  </article>
+</section>
+
+<section id="point1" class="detail">
+  <h2>Market Convergence & Opportunity</h2>
+  <p>Detailed description for: <strong>Market Convergence & Opportunity</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point2" class="detail">
+  <h2>Deep Technical Differentiation</h2>
+  <p>Detailed description for: <strong>Deep Technical Differentiation</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point3" class="detail">
+  <h2>Manufacturing & Automation</h2>
+  <p>Detailed description for: <strong>Manufacturing & Automation</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point4" class="detail">
+  <h2>Geopolitical & Strategic Positioning</h2>
+  <p>Detailed description for: <strong>Geopolitical & Strategic Positioning</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point5" class="detail">
+  <h2>Market Timing & Moats</h2>
+  <p>Detailed description for: <strong>Market Timing & Moats</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point6" class="detail">
+  <h2>Financial & Partnering Roadmap</h2>
+  <p>Detailed description for: <strong>Financial & Partnering Roadmap</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point7" class="detail">
+  <h2>AI-Native Architecture & Edge</h2>
+  <p>Detailed description for: <strong>AI-Native Architecture & Edge</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point8" class="detail">
+  <h2>Vertical Integration & Ecosystem</h2>
+  <p>Detailed description for: <strong>Vertical Integration & Ecosystem</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point9" class="detail">
+  <h2>Integrated Campus Model</h2>
+  <p>Detailed description for: <strong>Integrated Campus Model</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point10" class="detail">
+  <h2>Global & Regional Strategy</h2>
+  <p>Detailed description for: <strong>Global & Regional Strategy</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point11" class="detail">
+  <h2>Impact & ESG Commitment</h2>
+  <p>Detailed description for: <strong>Impact & ESG Commitment</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<section id="point12" class="detail">
+  <h2>Call to Action & Next Steps</h2>
+  <p>Detailed description for: <strong>Call to Action & Next Steps</strong> goes here. You can update this with bullet points or visuals.</p>
+  <button class="backBtn">← Back to Dashboard</button>
+</section>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const details = document.querySelectorAll('.detail');
+  const dashboard = document.getElementById('dashboard');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.target;
+      dashboard.style.display = 'none';
+      document.getElementById(id).classList.add('active');
+    });
+  });
+
+  details.forEach(page => {
+    page.querySelector('.backBtn').addEventListener('click', () => {
+      page.classList.remove('active');
+      dashboard.style.display = 'grid';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+
 </body>
 </html>

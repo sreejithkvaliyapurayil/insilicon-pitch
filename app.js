@@ -1,294 +1,318 @@
-/* INSILICON Investor Deck – Interactive Logic */
+// Application data
+const appData = {
+  company: "INSILICON Semiconductor",
+  tagline: "India-UAE AI-Native GPU Powerhouse",
+  subtitle: "Design → Fab → Automation — One Campus",
+  sections: [
+    {
+      id: "market",
+      title: "Market Opportunity",
+      icon: "📈",
+      summary: "$453B AI Chip Market by 2030 (14% CAGR)",
+      details: {
+        title: "Market Convergence - The Trillion-Dollar Opportunity",
+        points: [
+          "$453B Global AI Chip Market by 2030 (14% CAGR)",
+          "$66.5B Edge AI Market growth at 21.7% CAGR", 
+          "$85B+ India-UAE Trade Corridor bilateral opportunity",
+          "US Tariff Impact: 25-100% creates massive displacement opportunity",
+          "$100B VC Funding (33% of all global VC now goes to AI companies)",
+          "Target 2% market share = $9B revenue potential by 2030"
+        ]
+      }
+    },
+    {
+      id: "architecture", 
+      title: "Technical Architecture",
+      icon: "🔧",
+      summary: "NVIDIA H100 vs INSILICON-1: 78% power reduction, 50% cost savings",
+      details: {
+        title: "Technical Architecture Deep-Dive",
+        points: [
+          "78% Power Reduction: 700W → 150W TDP",
+          "50% Cost Savings: $30-40K → $15-20K manufacturing cost",
+          "AI-Native Architecture: Custom Transformer Processing Units vs adapted CUDA cores",
+          "Hardware-accelerated tokenization for multilingual AI (Hindi/Arabic/English)",
+          "4nm process node with 90.7B transistors, 80GB HBM3 memory",
+          "80GB HBM3 @ 3TB/s bandwidth for superior performance"
+        ]
+      }
+    },
+    {
+      id: "manufacturing",
+      title: "Manufacturing Revolution", 
+      icon: "🏭",
+      summary: "Phase-gate approach: Fabless → India-UAE → Full Integration",
+      details: {
+        title: "Manufacturing & Automation Revolution",
+        points: [
+          "Phase-Gate Approach: Fabless → India-UAE Manufacturing → Full Integration",
+          "Karnataka 8 inch Wafer Fab: 50,000 wafers/month capacity",
+          "Smart-Fab Integration: AI-driven automation with real-time yield optimization",
+          "CEPA Benefits: 15-20% cost reduction through duty-free component flow",
+          "Technical Specs: $30-50M mask costs, 95% yield targets, 15-week production cycles",
+          "First silicon in 12 months, volume production in 18 months"
+        ]
+      }
+    },
+    {
+      id: "geopolitical",
+      title: "Geopolitical Advantages",
+      icon: "🌍", 
+      summary: "India-UAE corridor advantages, tariff arbitrage, strategic positioning",
+      details: {
+        title: "Geopolitical Positioning & Strategic Advantages",
+        points: [
+          "Tariff Arbitrage: Avoid 25-100% US tariffs on Chinese/Taiwanese chips",
+          "India Advantages: ₹76,000 Cr PLI program, 300,000+ semiconductor engineers",
+          "UAE Advantages: 0% corporate tax, $100B+ sovereign funds, strategic location",
+          "Competitive Moats: First integrated design-fab-automation campus model",
+          "Market Timing: China restrictions create $200B+ supply gap by 2027",
+          "CEPA duty-free exports, Gateway to MENA/EU markets"
+        ]
+      }
+    },
+    {
+      id: "investment",
+      title: "Investment Thesis",
+      icon: "💰",
+      summary: "$50M Series A breakdown, $1B revenue by 2028, IPO readiness 2028",
+      details: {
+        title: "Investment Thesis & Financial Roadmap",
+        points: [
+          "$50M Series A Breakdown: 40% design team, 25% prototypes, 20% smart-fab, 15% operations",
+          "Technical Milestones: First silicon in 12 months, volume production in 18 months",
+          "Market Capture: Target 2% of $453B market = $9B revenue potential by 2030",
+          "Financial Projections: $1B revenue by 2028, $10B by 2032, IPO readiness 2028",
+          "Break-even: Year 4, IRR > 35%",
+          "Exit paths: IPO or NVIDIA/AMD buyout"
+        ]
+      }
+    },
+    {
+      id: "founder",
+      title: "Founder's Edge",
+      icon: "👨‍💼",
+      summary: "22 years: ST Micro → FICO AI/Cloud Director, RTL + Kubernetes expertise", 
+      details: {
+        title: "Founder's Edge & Leadership Team",
+        points: [
+          "22 years experience: ST Microelectronics → FICO AI/Cloud Director",
+          "Speaks both RTL and Kubernetes - rare dual-domain mastery",
+          "Built $100M+ analytics P&Ls, led 200-person teams",
+          "Backed by ex-NVIDIA principal architects (advisors)",
+          "Mission: Bridge India's manufacturing with UAE's innovation ecosystem",
+          "Cross-cultural leader: Indian talent + Global market access"
+        ]
+      }
+    },
+    {
+      id: "problem",
+      title: "Problem-Solution Gap",
+      icon: "⚡",
+      summary: "Current GPUs 700W impossible for edge, 6-month redesign too slow",
+      details: {
+        title: "Problem → Solution Gap Analysis",
+        points: [
+          "Current GPUs (H100) = 700W → impossible for edge & EVs",
+          "6-month silicon redesign loop → too slow for LLM pace", 
+          "Fab <7nm limited to Taiwan/US; heavy tariff exposure",
+          "INSILICON-1 Solution: 150W TDP, 78% power reduction",
+          "4nm transformer engines, FP4/INT4 native processing",
+          "Hardware tokenizers for Hindi-Arabic-English multilingual AI"
+        ]
+      }
+    },
+    {
+      id: "campus",
+      title: "Integrated Campus Model",
+      icon: "🏢",
+      summary: "Design → Fab → Automation — One Campus in Dubai Silicon Oasis",
+      details: {
+        title: "Integrated Campus Model Innovation",
+        points: [
+          "Design Studio – Synopsys/Cadence cloud EDA tools",
+          "Smart-Fab – Robotic 6 inch/8 inch pilot → 4nm full fab",
+          "Automation Nerve-Center – AI-driven APC, digital twins",
+          "Edge-to-Cloud Lab – Kubernetes GPU testbed",
+          "All on a single secured site in Dubai Silicon Oasis",
+          "Eliminates offshore logistics, reduces tape-out cycles to 3 months"
+        ]
+      }
+    },
+    {
+      id: "roadmap",
+      title: "Roadmap Timeline", 
+      icon: "🗓️",
+      summary: "M1-18: Fabless design → Y2: Pilot fab → Y5: Mega-fab",
+      details: {
+        title: "Strategic Roadmap & Timeline",
+        points: [
+          "M 1-18: Fabless design, first TSMC tape-out",
+          "Y 2: 180nm micro-fab pilot (Dubai Silicon Oasis)",
+          "Y 3-4: Karnataka 8 inch fab + CEPA duty-free flow",
+          "Y 5: 4nm UAE mega-fab; Volume GPUs ship",
+          "Milestones Achieved: RTL spec complete, Synopsys & AWS credits secured",
+          "LOIs worth $12M GPU pre-orders already secured"
+        ]
+      }
+    },
+    {
+      id: "moats",
+      title: "Tech Moats",
+      icon: "🛡️",
+      summary: "AI-Native ISA, closed-loop DFM, sovereign compliance",
+      details: {
+        title: "Technical Moats & Competitive Advantages",
+        points: [
+          "AI-Native ISA — transformer ops in hardware",
+          "Closed-Loop DFM — design ↔ fab ML feedback <24h",
+          "Sovereign-Compliant Supply — India mask-sets, UAE fab, US-friendly IP",
+          "Green-Fab — 30% less water & power via smart robotics",
+          "Robotic wafer handling cuts particle defects by 32%",
+          "Digital-twin simulations predict equipment faults and optimize scheduling"
+        ]
+      }
+    },
+    {
+      id: "business",
+      title: "Business Model",
+      icon: "💼",
+      summary: "4 revenue streams: Chip sales, IP licensing, Cloud GPU-aaS, Gov SKUs",
+      details: {
+        title: "Business Model & Revenue Streams",
+        points: [
+          "Chip Sales – Automotive, telco, data-center edge applications",
+          "IP Licensing – Transformer engine blocks to ASIC houses",
+          "Cloud GPU-aaS – Pay-per-use racks in UAE Tier-IV data centers", 
+          "Gov-secure SKUs – Defense & space variants",
+          "Target markets: Edge computing, autonomous vehicles, smart factories",
+          "Premium pricing strategy for AI-native capabilities"
+        ]
+      }
+    },
+    {
+      id: "gtm",
+      title: "Go-to-Market Strategy",
+      icon: "🚀",
+      summary: "Anchor customers, strategic alliances, regulatory fast-track",
+      details: {
+        title: "Go-to-Market Strategy & Partnerships",
+        points: [
+          "Anchor Customers – Tata Elxsi, du, G42 Cloud partnerships",
+          "Strategic Alliances – Synopsys, AWS ISV Accelerate, NVIDIA Inception",
+          "Regulatory – Fast-track VEU clearance, UAE AI Council support",
+          "Leadership Team: ex-FICO Cloud Director, 20yr NVIDIA architect, ex-GlobalFoundries GM",
+          "Board Advisor – Former India Semiconductor Mission head",
+          "ESG Impact: 40% renewable power, upskill 1,000 engineers in 5 years"
+        ]
+      }
+    }
+  ]
+};
 
-// ===================== DATA DEFINITIONS ===================== //
-const gridSections = [
-  {
-    title: 'Vision & Opportunity',
-    content: `
-      <p>The global AI semiconductor market is projected to grow from <strong>$118B</strong> in 2024 to <strong>$453B</strong> by 2030 (CAGR 14%). INSILICON is positioned as <em>Asia’s NVIDIA</em>, building AI-native chips and systems for hyperscale and edge workloads.</p>
-    `,
-  },
-  {
-    title: 'Geopolitical Advantage',
-    content: `
-      <p>Leveraging the India–UAE economic corridor (>$85B annual trade), INSILICON gains tariff-free access to key markets, trusted supply chains, and sovereign financing.</p>
-    `,
-  },
-  {
-    title: 'Technical Disruption',
-    content: `
-      <p>Custom transformer engines, 4 nm process, and 208B+ transistors enable unmatched performance per-watt for AI inference and training.</p>
-    `,
-  },
-  {
-    title: 'Founder Expertise',
-    content: `
-      <p>22 years in semiconductor and cloud architecture. Dual-domain mastery spanning chip design and hyperscale AI deployments.</p>
-    `,
-  },
-  {
-    title: 'Fabless Strategy',
-    content: `
-      <p>Design-first model with TSMC as manufacturing partner ensures rapid tape-outs, low cap-ex, and state-of-the-art nodes.</p>
-    `,
-  },
-  {
-    title: 'Manufacturing Transition',
-    content: `
-      <p>Karnataka smart-fab (2028) – $500M investment for 50k wafers/month, 95% yield target, enabling vertical integration.</p>
-    `,
-  },
-  {
-    title: 'AI Architecture',
-    content: `
-      <p>Transformer-native cores, 3.0 TB/s memory bandwidth, and on-chip sparsity engines deliver 78% lower power than NVIDIA H100.</p>
-    `,
-  },
-  {
-    title: 'Cloud Integration',
-    content: `
-      <p>Single-channel AI platform integrates with AWS, Azure, and private clouds via standard Kubernetes operators.</p>
-    `,
-  },
-  {
-    title: 'Competitive Advantage',
-    content: `
-      <p>Up to 78% power reduction and 50% lower TCO vs NVIDIA, with unit cost US$15-20K.</p>
-    `,
-  },
-  {
-    title: 'Target Markets',
-    content: `
-      <p>Hyperscale data centers, edge inference clusters, and enterprise AI appliances across finance, healthcare, and smart-cities.</p>
-    `,
-  },
-  {
-    title: 'Financial Projections',
-    content: `
-      <p>Series A: $50M → Series B: $200M → Revenue $1B (2028), $10B (2032) capturing 2% global AI silicon share.</p>
-    `,
-  },
-  {
-    title: 'Funding & Partnerships',
-    content: `
-      <p>Backed by sovereign funds, strategic alliances with AWS, TSMC, and Karnataka Govt. Secured $100B global VC pipeline.</p>
-    `,
-  },
-];
+// DOM elements
+let sectionsGrid;
+let detailView;
+let dashboardView;
+let detailIcon;
+let detailTitle;
+let detailPoints;
+let backButton;
 
-const slideDeck = [
-  {
-    title: '1. Market Opportunity',
-    body: `
-      <p>The AI chip TAM is accelerating toward <strong>$453B</strong> by 2030, driven by data-center and edge deployments.</p>
-      <div class="chart-container" style="position: relative; height: 300px;">
-        <canvas id="marketChart"></canvas>
-      </div>
-      <p class="mt-8">Tariff realignments and supply-chain shifts unlock regional opportunities worth <strong>$85B+</strong>.</p>
-    `,
-    onMount: renderMarketChart,
-  },
-  {
-    title: '2. Technical Architecture',
-    body: `
-      <p>Comparison of NVIDIA H100 vs INSILICON-1:</p>
-      <table class="comparison-table mt-8">
-        <thead>
-          <tr><th>Metric</th><th>NVIDIA H100</th><th>INSILICON-1</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Process Node</td><td>5 nm</td><td>4 nm</td></tr>
-          <tr><td>Transistor Count</td><td>80 B</td><td>208 B+</td></tr>
-          <tr><td>Power Draw</td><td>700 W</td><td>150 W</td></tr>
-          <tr><td>Memory BW</td><td>3.35 TB/s</td><td>3.0 TB/s</td></tr>
-          <tr><td>Unit Cost</td><td>$30-35K</td><td>$15-20K</td></tr>
-        </tbody>
-      </table>
-    `,
-  },
-  {
-    title: '3. Smart-Fab Manufacturing',
-    body: `
-      <p>Phase-gate roadmap toward vertical manufacturing:</p>
-      <ol class="mt-8">
-        <li>Fabless 2025-2027: TSMC 4 nm production</li>
-        <li>Smart-Fab build 2026-2028: $500M cap-ex</li>
-        <li>Pilot runs Q3-2028 – 50K wafers/month</li>
-        <li>Full ramp 2029 – 95% yield, <strong>$1.5B</strong> annual cost savings</li>
-      </ol>
-    `,
-  },
-  {
-    title: '4. India-UAE Corridor',
-    body: `
-      <p>Strategic moats unlocked:</p>
-      <ul class="mt-8">
-        <li>Tariff-free component flow between Asia, EMEA, and Americas</li>
-        <li>Sovereign co-investment &amp; debt financing</li>
-        <li>Resilient supply chain amid geo-political tensions</li>
-      </ul>
-    `,
-  },
-  {
-    title: '5. Series A Funding',
-    body: `
-      <p>Use of proceeds:</p>
-      <ul class="mt-8">
-        <li>Silicon tape-out &amp; validation: $20M</li>
-        <li>Software stack &amp; SDK: $8M</li>
-        <li>Team expansion (R&amp;D &amp; Sales): $12M</li>
-        <li>Working capital &amp; ops: $10M</li>
-      </ul>
-      <p class="mt-8">Milestones: A0 silicon Q1-2026, revenue run-rate $120M 2027.</p>
-    `,
-  },
-];
+// Initialize the application
+function init() {
+  // Get DOM elements
+  sectionsGrid = document.getElementById('sectionsGrid');
+  detailView = document.getElementById('detailView');
+  dashboardView = document.getElementById('dashboard');
+  detailIcon = document.getElementById('detailIcon');
+  detailTitle = document.getElementById('detailTitle');
+  detailPoints = document.getElementById('detailPoints');
+  backButton = document.getElementById('backButton');
 
-// ===================== DOM ELEMENTS ===================== //
-const gridContainer = document.getElementById('grid-container');
-const slideContainer = document.getElementById('slide-container');
-const gridView = document.getElementById('grid-view');
-const slideView = document.getElementById('slide-view');
-const btnGrid = document.getElementById('btn-grid');
-const btnSlides = document.getElementById('btn-slides');
-const prevSlideBtn = document.getElementById('prev-slide');
-const nextSlideBtn = document.getElementById('next-slide');
+  // Set up event listeners
+  backButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    showDashboard();
+  });
 
-// ===================== GRID RENDER ===================== //
-function buildGrid() {
-  gridContainer.innerHTML = '';
-  gridSections.forEach(({ title, content }, idx) => {
-    const item = document.createElement('div');
-    item.className = 'grid-item';
+  // Render dashboard
+  renderDashboard();
+}
 
-    const header = document.createElement('div');
-    header.className = 'grid-item__header';
-    header.textContent = `${idx + 1}. ${title}`;
-
-    const body = document.createElement('div');
-    body.className = 'grid-item__content';
-    body.innerHTML = content;
-
-    item.appendChild(header);
-    item.appendChild(body);
-
-    item.addEventListener('click', () => {
-      item.classList.toggle('expanded');
-    });
-
-    gridContainer.appendChild(item);
+// Render the dashboard grid
+function renderDashboard() {
+  sectionsGrid.innerHTML = '';
+  
+  appData.sections.forEach((section, index) => {
+    const sectionCard = createSectionCard(section, index);
+    sectionsGrid.appendChild(sectionCard);
   });
 }
 
-// ===================== SLIDE RENDER ===================== //
-let currentSlide = 0;
-let currentChart = null; // Hold chart instance to destroy between slides
-
-function buildSlide(index) {
-  const slide = slideDeck[index];
-  slideContainer.innerHTML = `
-    <h2>${slide.title}</h2>
-    <div class="slide-body">${slide.body}</div>
+// Create a section card element
+function createSectionCard(section, index) {
+  const card = document.createElement('div');
+  card.className = 'section-card';
+  card.setAttribute('data-section-id', section.id);
+  
+  card.innerHTML = `
+    <div>
+      <span class="section-icon">${section.icon}</span>
+      <h3 class="section-title">${section.title}</h3>
+    </div>
+    <p class="section-summary">${section.summary}</p>
   `;
-
-  // Clean up previous chart if exists
-  if (currentChart) {
-    currentChart.destroy();
-    currentChart = null;
-  }
-
-  // If slide defines an onMount callback, execute it now
-  if (typeof slide.onMount === 'function') {
-    slide.onMount();
-  }
-
-  // Disable/enable nav buttons
-  prevSlideBtn.disabled = index === 0;
-  nextSlideBtn.disabled = index === slideDeck.length - 1;
-}
-
-function renderMarketChart() {
-  const ctx = document.getElementById('marketChart');
-  if (!ctx) return;
-
-  currentChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['2024', '2030'],
-      datasets: [
-        {
-          label: 'AI Chip Market (USD B)',
-          data: [118, 453],
-          backgroundColor: ['#1FB8CD', '#5D878F'],
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-      },
-      scales: {
-        y: {
-          ticks: {
-            color: getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim(),
-          },
-          grid: { color: 'rgba(255,255,255,0.05)' },
-        },
-        x: {
-          ticks: {
-            color: getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim(),
-          },
-          grid: { display: false },
-        },
-      },
-    },
+  
+  // Add click event listener
+  card.addEventListener('click', function(e) {
+    e.preventDefault();
+    showSectionDetail(section);
   });
+  
+  return card;
 }
 
-// ===================== EVENT BINDINGS ===================== //
-btnGrid.addEventListener('click', () => {
-  btnGrid.classList.add('btn--primary');
-  btnGrid.classList.remove('btn--outline');
-  btnSlides.classList.add('btn--outline');
-  btnSlides.classList.remove('btn--primary');
-  slideView.classList.add('hidden');
-  gridView.classList.remove('hidden');
-});
+// Show section detail view
+function showSectionDetail(section) {
+  // Populate detail content
+  detailIcon.textContent = section.icon;
+  detailTitle.textContent = section.details.title;
+  
+  // Clear and populate points
+  detailPoints.innerHTML = '';
+  section.details.points.forEach(point => {
+    const pointElement = document.createElement('div');
+    pointElement.className = 'detail-point';
+    pointElement.textContent = point;
+    detailPoints.appendChild(pointElement);
+  });
+  
+  // Hide dashboard and show detail view
+  dashboardView.classList.add('hidden');
+  detailView.classList.remove('hidden');
+  
+  // Smooth scroll to top
+  detailView.scrollTop = 0;
+}
 
-btnSlides.addEventListener('click', () => {
-  btnSlides.classList.add('btn--primary');
-  btnSlides.classList.remove('btn--outline');
-  btnGrid.classList.add('btn--outline');
-  btnGrid.classList.remove('btn--primary');
-  gridView.classList.add('hidden');
-  slideView.classList.remove('hidden');
-  buildSlide(currentSlide);
-});
+// Show dashboard view
+function showDashboard() {
+  // Hide detail view and show dashboard
+  detailView.classList.add('hidden');
+  dashboardView.classList.remove('hidden');
+  
+  // Smooth scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-prevSlideBtn.addEventListener('click', () => {
-  if (currentSlide > 0) {
-    currentSlide -= 1;
-    buildSlide(currentSlide);
+// Handle escape key to go back to dashboard
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && !detailView.classList.contains('hidden')) {
+    showDashboard();
   }
 });
 
-nextSlideBtn.addEventListener('click', () => {
-  if (currentSlide < slideDeck.length - 1) {
-    currentSlide += 1;
-    buildSlide(currentSlide);
-  }
-});
-card.addEventListener("click", () => {
-  const detail = document.getElementById(card.dataset.target);
-  detail.style.display = "block";
-  document.body.classList.add("no-scroll");
-});
-closeBtn.addEventListener("click", () => {
-  detail.style.display = "none";
-  document.body.classList.remove("no-scroll");
-});
-
-
-// ===================== INITIALISE ===================== //
-buildGrid();
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', init);
