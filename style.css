@@ -844,3 +844,19 @@ body {
 .hidden {
   display: none;
 }
+.detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg);
+  padding: 4rem 6%;
+  overflow-y: auto;
+  z-index: 9999;
+  display: none;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+

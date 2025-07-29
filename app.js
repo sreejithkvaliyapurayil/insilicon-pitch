@@ -279,6 +279,16 @@ nextSlideBtn.addEventListener('click', () => {
     buildSlide(currentSlide);
   }
 });
+card.addEventListener("click", () => {
+  const detail = document.getElementById(card.dataset.target);
+  detail.style.display = "block";
+  document.body.classList.add("no-scroll");
+});
+closeBtn.addEventListener("click", () => {
+  detail.style.display = "none";
+  document.body.classList.remove("no-scroll");
+});
+
 
 // ===================== INITIALISE ===================== //
 buildGrid();
