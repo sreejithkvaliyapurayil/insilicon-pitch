@@ -4,108 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSILICON Semiconductor - Investor Dashboard</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0a0f2c, #121740);
-            color: #f0f0f0;
+            background-color: #0e0e0e;
+            color: #f4f4f4;
         }
 
         .app-container {
-            max-width: 1400px;
-            margin: auto;
-            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .dashboard-header {
-            text-align: center;
+            background: #121212;
             padding: 2rem 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #222;
+            text-align: center;
         }
 
         .company-name {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            background: linear-gradient(90deg, #00ffff, #6dd5fa);
+            background: linear-gradient(90deg, #1DE9B6, #00E5FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+            margin: 0;
         }
 
-        .tagline {
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-top: 0.5rem;
-            color: #a0e9ff;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #aaa;
+        .tagline, .subtitle {
+            font-size: 1.1rem;
+            color: #ccc;
             margin-top: 0.3rem;
         }
 
         .dashboard-main {
-            margin-top: 3rem;
+            padding: 2rem;
+            flex: 1;
         }
 
         .sections-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .section-card {
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .section-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .detail-view {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
+            display: none;
+            background: #0f0f0f;
             padding: 2rem;
-            box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
+            flex: 1;
+        }
+
+        .detail-view.active {
+            display: block;
         }
 
         .detail-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
         }
 
         .back-button {
             background: none;
             border: none;
+            color: #00e5ff;
             font-size: 1rem;
-            color: #00ffff;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .back-button:hover {
-            color: #ffffff;
-        }
-
-        .detail-title {
-            font-size: 2rem;
-            margin-top: 1rem;
-            background: linear-gradient(to right, #00ffff, #6dd5fa);
+        .detail-logo .company-name-small {
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #1DE9B6, #00E5FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .detail-content {
-            padding-top: 1rem;
+        .detail-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .detail-points {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ccc;
         }
 
         .detail-icon {
             font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .hidden {
-            display: none;
+        /* Custom AI/Semiconductor Icons */
+        .icon-chip::before { content: "🧠"; }
+        .icon-fab::before { content: "🏭"; }
+        .icon-globe::before { content: "🌐"; }
+        .icon-gear::before { content: "⚙️"; }
+        .icon-eco::before { content: "♻️"; }
+        .icon-rocket::before { content: "🚀"; }
+        .icon-strategy::before { content: "📊"; }
+        .icon-campus::before { content: "🏫"; }
+
+        @media (max-width: 600px) {
+            .company-name { font-size: 2rem; }
         }
     </style>
 </head>
@@ -131,11 +163,9 @@
         </div>
 
         <!-- Detail View -->
-        <div id="detailView" class="detail-view hidden">
+        <div id="detailView" class="detail-view">
             <header class="detail-header">
-                <button class="back-button" id="backButton">
-                    ← Back to Dashboard
-                </button>
+                <button class="back-button" id="backButton">← Back to Dashboard</button>
                 <div class="detail-logo">
                     <span class="company-name-small">INSILICON</span>
                 </div>
