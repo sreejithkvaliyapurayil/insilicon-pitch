@@ -1,114 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>INSILICON Pitch Dashboard</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    :root{
-      --neon:#00ffff;
-      --deep:#13274f;
-      --card:#10305f;
-      --bg:#0a0a0a;
-      --text:#ffffff;
-    }
-    *{box-sizing:border-box;margin:0;padding:0;font-family:"Montserrat",Arial,sans-serif}
-    body{background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center}
-    /* ─── HEADER ─── */
-    header{width:100%;padding:1.2rem 3%;display:flex;align-items:center;gap:1rem;}
-    header img{height:40px}
-    header h1{font-size:1.3rem;color:var(--neon);text-shadow:0 0 8px var(--neon)}
-    /* ─── DASHBOARD GRID ─── */
-    #dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;width:90%;max-width:1280px;margin-top:3rem}
-    .card{
-      background:var(--card);
-      border:2px solid var(--neon);
-      border-radius:12px;
-      padding:1.8rem;
-      cursor:pointer;
-      transition:transform .2s,box-shadow .2s;
-    }
-    .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 0 18px var(--neon);
-    }
-    .card h3{color:var(--neon);margin-bottom:.6rem;font-size:1.15rem}
-    .card p{font-size:.9rem;line-height:1.4}
-    /* ─── DETAIL PAGES ─── */
-    .detail{position:fixed;inset:0;background:var(--deep);padding:4rem 6%;overflow-y:auto;display:none;color:var(--text);}
-    .detail.active{display:block;animation:fade .25s}
-    @keyframes fade{from{opacity:0}to{opacity:1}}
-    .detail h2{color:var(--neon);margin-bottom:1rem;font-size:2rem;text-shadow:0 0 8px var(--neon)}
-    .detail p{margin:1rem 0;font-size:1rem;line-height:1.6}
-    .backBtn{
-      margin-top:2rem;background:var(--neon);color:var(--deep);border:none;padding:.7rem 1.4rem;font-weight:600;border-radius:8px;cursor:pointer
-    }
-    .backBtn:hover{opacity:.85}
-    /* tidy scrollbar */
-    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--neon);border-radius:3px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSILICON Semiconductor - Investor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0a0f2c, #121740);
+            color: #f0f0f0;
+        }
+
+        .app-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .company-name {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00ffff, #6dd5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            color: #a0e9ff;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #aaa;
+            margin-top: 0.3rem;
+        }
+
+        .dashboard-main {
+            margin-top: 3rem;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .detail-view {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #ffffff;
+        }
+
+        .detail-title {
+            font-size: 2rem;
+            margin-top: 1rem;
+            background: linear-gradient(to right, #00ffff, #6dd5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .detail-content {
+            padding-top: 1rem;
+        }
+
+        .detail-icon {
+            font-size: 3rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="app-container">
+        <!-- Dashboard View -->
+        <div id="dashboard" class="dashboard-view">
+            <header class="dashboard-header">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <h1 class="company-name">INSILICON</h1>
+                        <p class="tagline">India-UAE AI-Native GPU Powerhouse</p>
+                        <p class="subtitle">Design → Fab → Automation — One Campus</p>
+                    </div>
+                </div>
+            </header>
 
-<header>
-  <!-- put your logo file at img/logo.png -->
-  <img src="img/logo.png" alt="INSILICON logo">
-  <h1>INSILICON Semiconductor</h1>
-</header>
+            <main class="dashboard-main">
+                <div class="sections-grid" id="sectionsGrid">
+                    <!-- Sections will be dynamically populated -->
+                </div>
+            </main>
+        </div>
 
-<section id="dashboard">
-  <article class="card" data-target="market">
-    <h3>Market Opportunity</h3><p>$453 B AI-chip TAM by 2030, Edge-AI 21.7% CAGR.</p>
-  </article>
+        <!-- Detail View -->
+        <div id="detailView" class="detail-view hidden">
+            <header class="detail-header">
+                <button class="back-button" id="backButton">
+                    ← Back to Dashboard
+                </button>
+                <div class="detail-logo">
+                    <span class="company-name-small">INSILICON</span>
+                </div>
+            </header>
 
-  <article class="card" data-target="architecture">
-    <h3>Technical Architecture</h3><p>INSILICON-1 vs H100 — 78 % lower power, 50 % cost.</p>
-  </article>
+            <main class="detail-main">
+                <div class="detail-content">
+                    <div class="detail-icon" id="detailIcon">📈</div>
+                    <h1 class="detail-title" id="detailTitle">Section Title</h1>
+                    <div class="detail-points" id="detailPoints">
+                        <!-- Points will be dynamically populated -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
 
-  <article class="card" data-target="manufacturing">
-    <h3>Manufacturing Roadmap</h3><p>Fabless → India 8″ fab → UAE mega-fab, AI automation.</p>
-  </article>
-
-  <article class="card" data-target="funding">
-    <h3>Series A $50 M Ask</h3><p>Use-of-funds, milestones, $9 B revenue upside.</p>
-  </article>
-</section>
-
-<!-- ─── DETAIL PAGES ─── -->
-<section id="market" class="detail">
-  <h2>Market Convergence – Trillion-Dollar Opportunity</h2>
-  <p>Global AI-chip spend jumps to <strong>$453 B</strong> by 2030 (14 % CAGR). Edge devices alone hit <strong>$66.5 B</strong>. Tariffs + India-UAE corridor open a displacement window worth hundreds of billions.</p>
-  <button class="backBtn">← Back</button>
-</section>
-
-<section id="architecture" class="detail">
-  <h2>Technical Architecture Deep-Dive</h2>
-  <p>INSILICON-1 delivers FP4/INT4 native throughput on a 4 nm node: 150 W TDP, 80 GB HBM3 @ 3 TB/s, hardware tokenizers for Hindi/Arabic/English.</p>
-  <button class="backBtn">← Back</button>
-</section>
-
-<section id="manufacturing" class="detail">
-  <h2>Manufacturing & Automation Revolution</h2>
-  <p>Phase-gate: Fabless → Karnataka pilot (50 k wafers/mo) → UAE mega-fab. Smart-fab AI drives 95 % yield, CEPA trims costs 15–20 %.</p>
-  <button class="backBtn">← Back</button>
-</section>
-
-<section id="funding" class="detail">
-  <h2>Series A – $50 M Use of Funds</h2>
-  <p>40 % design & EDA, 25 % prototypes, 20 % smart-fab buildout, 15 % working capital. Target $9 B revenue by 2030, break-even Year 4.</p>
-  <button class="backBtn">← Back</button>
-</section>
-
-<script>
-  /* simple routing */
-  const dash=document.getElementById('dashboard');
-  document.querySelectorAll('.card').forEach(c=>{
-    c.onclick=()=>{dash.style.display='none';document.getElementById(c.dataset.target).classList.add('active');};
-  });
-  document.querySelectorAll('.backBtn').forEach(b=>{
-    b.onclick=()=>{b.closest('.detail').classList.remove('active');dash.style.display='grid';window.scrollTo(0,0);}
-  });
-</script>
+    <script src="app.js"></script>
 </body>
 </html>
 
