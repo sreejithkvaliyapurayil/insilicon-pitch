@@ -859,4 +859,16 @@ body {
 body.no-scroll {
   overflow: hidden;
 }
+header img {
+  width: 150px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+}
+header img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 28px rgba(0, 255, 255, 0.7);
+}
+
 
