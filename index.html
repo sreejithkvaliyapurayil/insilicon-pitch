@@ -110,7 +110,6 @@
 </head>
 <body>
   <div class="app-container">
-    <!-- Dashboard View -->
     <div id="dashboard" class="dashboard-view">
       <header class="dashboard-header">
         <h1 class="company-name">INSILICON</h1>
@@ -118,93 +117,89 @@
         <p class="subtitle">Design → Fab → Automation — One Campus</p>
       </header>
       <main class="dashboard-main">
-        <div class="sections-grid" id="sectionsGrid">
-          <!-- Cards will be dynamically inserted here -->
-        </div>
+        <div class="sections-grid" id="sectionsGrid"></div>
       </main>
     </div>
-
-    <!-- Detail View -->
     <div id="detailView" class="detail-view">
       <button class="back-button" onclick="goBack()">← Back to Dashboard</button>
       <h1 class="detail-title" id="detailTitle">Title</h1>
       <div class="detail-points" id="detailPoints"></div>
     </div>
   </div>
-
   <script>
     const sections = [
       {
         icon: "📈",
         title: "Market Opportunity",
         description: "$453B AI Chip Market by 2030 (14% CAGR)",
-        details: "AI Semiconductor industry growing with CAGR 14% reaching $453B by 2030."
+        details: `INSILICON enters the market at a time when AI-native chipsets are no longer optional—they’re mission critical...`
       },
       {
-        icon: "🛠️",
+        icon: "🧠",
         title: "Technical Architecture",
-        description: "NVIDIA H100 vs INSILICON-1: 78% power reduction, 50% cost savings",
-        details: "We have redesigned GPU cores for data-locality, compute-in-memory and AI inferencing, leading to efficiency."
+        description: "AI-Native North Star Design Platform",
+        details: `INSILICON's technical architecture is designed as a North Star platform—a cohesive, AI-native design ecosystem...`
       },
       {
         icon: "🏭",
-        title: "Manufacturing Revolution",
-        description: "Phase-gate approach: Fabless → India-UAE → Full Integration",
-        details: "AI-driven fabless design migrating to full in-house chip + automation."
+        title: "Manufacturing Evolution",
+        description: "From DaaS to Fabless to IDM",
+        details: `Our journey to becoming a fully integrated semiconductor powerhouse begins with a lean, agile design-as-a-service model...`
       },
       {
-        icon: "��",
+        icon: "🌍",
         title: "Geopolitical Advantages",
-        description: "India-UAE corridor advantages, tariff arbitrage, strategic positioning",
-        details: "Both governments collaborating on semiconductor strategy gives us edge."
+        description: "India-UAE Corridor for AI Chips",
+        details: `In a fractured global supply chain environment, INSILICON leverages bilateral agreements between India and the UAE...`
       },
       {
         icon: "💰",
         title: "Investment Thesis",
-        description: "$50M Series A breakdown, $1B revenue by 2028, IPO readiness 2028",
-        details: "Clear path from silicon tapeout to monetization, with VCs and sovereign fund interest."
+        description: "Capital Efficient, AI-Leveraged Growth",
+        details: `INSILICON offers a rare convergence of deep-tech vision, AI leverage, and early market advantage for investors seeking exponential growth...`
       },
       {
-        icon: "👨‍🔬",
+        icon: "🚀",
         title: "Founder's Edge",
-        description: "22 years: ST Micro → FICO AI/Cloud Director, RTL + Kubernetes expertise",
-        details: "The founder blends chip design + modern AI infrastructure deployment."
+        description: "Ex-NVIDIA Engineers with Proven Vision",
+        details: `Founded by a team of engineers and AI researchers from NVIDIA, Qualcomm, and IITs, INSILICON combines deep technical roots...`
       },
       {
-        icon: "⚡",
+        icon: "🧩",
         title: "Problem-Solution Gap",
-        description: "Current GPUs 700W impossible for edge, 6-month redesign too slow",
-        details: "INSILICON aims for sub-300W, rapid prototyping cycles using AI-driven EDA tools."
+        description: "Legacy GPUs Not Fit for AI",
+        details: `Traditional GPU designs are bottlenecked for today’s AI workloads. INSILICON addresses this head-on by focusing on...`
       },
       {
         icon: "🏢",
         title: "Integrated Campus Model",
-        description: "Design → Fab → Automation — One Campus in Dubai Silicon Oasis",
-        details: "First of its kind India-UAE co-campus with shared IP and supply chain."
+        description: "Design + Fab + Automation Stack",
+        details: `Unlike fragmented chip companies, INSILICON will unify design, automation, and eventually fabrication in a single campus...`
       },
       {
-        icon: "📅",
+        icon: "��",
         title: "Roadmap Timeline",
-        description: "M1-18: Fabless design → Y2: Pilot fab → Y5: Mega fab",
-        details: "Clear phase-gated roadmap for scaling design to manufacturing."
+        description: "Phase 1-2-3 Execution Plan",
+        details: `Our roadmap spans three phases: Phase 1 - DaaS (Design-as-a-Service) launch in UAE, Phase 2 - 2/3nm AI GPU tape-outs...`
       },
       {
-        icon: "🧱",
+        icon: "🛡️",
         title: "Tech Moats",
-        description: "AI-Native ISA, closed-loop DFM, sovereign Cloud GPU stack, Gen5 EDA",
-        details: "Unique tech stack combining software + silicon for AI inference."
+        description: "AI-Native IP & Control Planes",
+        details: `With proprietary AI compilers, orchestration tools, and custom silicon layouts, INSILICON’s technology stack builds a defensible moat...`
       },
       {
         icon: "💼",
         title: "Business Model",
-        description: "4 revenue streams: Chip sales, IP licensing, Cloud GPU as a Service, SaaS EDA",
-        details: "Multiple monetization paths reducing investor risk."
+        description: "DaaS + NRE Licensing + Foundry",
+        details: `Our revenue model blends high-margin Design-as-a-Service with licensing of IP blocks and eventual foundry-level fabrication revenue...`
       },
       {
-        icon: "🚀",
+        icon: "📣",
         title: "Go-to-Market Strategy",
-        description: "Anchor customers, strategic alliances, exclusive first looks",
-        details: "Securing design wins in UAE, India and APAC to build early traction."
+        description: "Targeting UAE + India AI Startups",
+        details: `INSILICON’s go-to-market approach is direct and ecosystem-driven. We start by onboarding UAE AI research centers and gov-backed...
+        `
       }
     ];
 
