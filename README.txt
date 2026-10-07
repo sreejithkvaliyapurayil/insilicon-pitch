@@ -1,0 +1,1 @@
+Extract this ZIP, then open index.html in Chrome, Safari, or Edge. Keep the files and assets folder together. The Downloads section includes the editable PowerPoint and PDF. Financial scenarios and targets are illustrative.
