@@ -1,0 +1,5 @@
+
+body { background:#0b0d36; color:#e8f7ff; font-family: 'Open Sans', sans-serif; }
+.reveal h1, .reveal h2, .reveal h3 { color:#00ffff; }
+.reveal section { text-align:left; }
+.logo { position:fixed; top:10px; right:10px; width:120px; }
